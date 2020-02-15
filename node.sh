@@ -1,5 +1,8 @@
-# install shasum
-apt-get install libdigest-sha-perl
+# Install shasum
+apt-get install libdigest-sha-perl -y
+
+# Install nslookup
+apt-get install dnsutils -y
 
 # Install Docker
 sudo apt-get update
