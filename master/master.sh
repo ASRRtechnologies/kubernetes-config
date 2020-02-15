@@ -9,4 +9,4 @@ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl versio
 
 # nginx-ingress-service
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/mandatory.yaml
-kubectl apply -f nginx-ingress-service.yaml
+kubectl apply -f https://raw.githubusercontent.com/ASRRtechnologies/kubernetes-config/master/master/yaml/nginx-ingress-service.yaml
