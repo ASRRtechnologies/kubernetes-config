@@ -1,6 +1,6 @@
 # Kubernetes Configuration
 
-## General node installation procedure
+## Worker node installation procedure
 1. Download the node installation script:
 ```
 wget https://raw.githubusercontent.com/ASRRtechnologies/kubernetes-config/master/node.sh
@@ -15,7 +15,7 @@ source node.sh
 ```
 3. Create a join token from the master:
 ```
-kubectl token create --print-join-command
+kubeadm token create --print-join-command
 ```
 4. Use the generated token to join the master
 
