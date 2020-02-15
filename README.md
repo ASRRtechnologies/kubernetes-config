@@ -41,4 +41,4 @@ kubeadm init --apiserver-advertise-address=<ip-address>
 wget https://raw.githubusercontent.com/ASRRtechnologies/kubernetes-config/master/master/master.sh
 chmod 777 master.sh && source master.sh
 ```
-6. Configure HAProxy. An example configuration can be found at: 
+6. Configure HAProxy. 
