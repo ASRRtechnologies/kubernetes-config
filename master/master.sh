@@ -1,3 +1,7 @@
+# Install Helm
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+chmod 777 get_helm.sh && source get_helm.sh
+
 # Install HAProxy
 apt-get install haproxy -y
 
