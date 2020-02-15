@@ -10,3 +10,8 @@ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl versio
 # nginx-ingress-service
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/mandatory.yaml
 kubectl apply -f https://raw.githubusercontent.com/ASRRtechnologies/kubernetes-config/master/master/yaml/nginx-ingress-service.yaml
+
+# cert-manager
+kubectl create namespace cert-manager
+kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.13.0/cert-manager.yaml
+kubectl apply -f https://raw.githubusercontent.com/ASRRtechnologies/kubernetes-config/master/master/yaml/letsencrypt-issuer.yaml
