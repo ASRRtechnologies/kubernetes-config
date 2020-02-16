@@ -13,7 +13,7 @@ chmod 777 node.sh
 ```
 source node.sh
 ```
-3. Create a join token from the master:
+3. Create a join token from the **master**:
 ```
 kubeadm token create --print-join-command
 ```
