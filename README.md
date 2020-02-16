@@ -13,11 +13,15 @@ chmod 777 node.sh
 ```
 source node.sh
 ```
-3. Create a join token from the **master**:
+4. Make sure swap is off
+```
+swapoff -a
+```
+5. Create a join token from the **master**:
 ```
 kubeadm token create --print-join-command
 ```
-4. Use the generated token to join the master
+6. Use the generated token to join the master
 
 ## Master node installation procedure
 1. Download & execute the node configuration script
