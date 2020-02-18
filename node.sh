@@ -64,3 +64,8 @@ EOF
 sudo apt-get update
 
 sudo apt-get install -y kubelet kubeadm kubectl
+
+# Allow everything
+/sbin/iptables -P INPUT ACCEPT
+/sbin/iptables -P FORWARD ACCEPT
+/sbin/iptables -P OUTPUT ACCEPT
