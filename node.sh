@@ -7,11 +7,14 @@ apt-get install sudo -y
 # Disable swap
 /sbin/swapoff -a
 
+# Install iptables-persistent
+sudo apt-get install -y iptables-persistent
+
 # Install shasum
-apt-get install libdigest-sha-perl -y
+sudo apt-get install libdigest-sha-perl -y
 
 # Install nslookup
-apt-get install dnsutils -y
+sudo apt-get install dnsutils -y
 
 # Install Docker
 sudo apt-get update
@@ -69,3 +72,4 @@ sudo apt-get install -y kubelet kubeadm kubectl
 /sbin/iptables -P INPUT ACCEPT
 /sbin/iptables -P FORWARD ACCEPT
 /sbin/iptables -P OUTPUT ACCEPT
+sudo netfilter-persistent save
