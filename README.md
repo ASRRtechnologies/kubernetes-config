@@ -13,11 +13,7 @@ chmod 777 node.sh
 ```
 source node.sh
 ```
-4. Make sure swap is off
-```
-swapoff -a
-```
-5. Create a join token from the **master**:
+4. Create a join token from the **master**:
 ```
 kubeadm token create --print-join-command
 ```
