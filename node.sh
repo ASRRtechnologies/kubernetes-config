@@ -1,3 +1,12 @@
+# Install sudo
+apt-get install sudo -y
+
+# Add /sbin/ to path
+[[ "$PATH" != *":/sbin/"* ]] && echo PATH="$PATH:/sbin/" >> /etc/environment && export PATH="$PATH:/sbin/"
+
+# Disable swap
+/sbin/swapoff -a
+
 # Install shasum
 apt-get install libdigest-sha-perl -y
 
