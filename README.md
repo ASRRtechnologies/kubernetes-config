@@ -17,7 +17,7 @@ source node.sh
 ```
 kubeadm token create --print-join-command
 ```
-6. Use the generated token to join the master
+5. Use the generated token to join the master
 
 ## Master node installation procedure
 1. Download & execute the node configuration script
