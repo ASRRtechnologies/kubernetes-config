@@ -72,7 +72,16 @@ sudo apt-get install -y kubelet kubeadm kubectl
 
 # Create startup script
 cat > /etc/init.d/node-startup <<EOF
-#!/bin/sh
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          node-startup
+# Required-Start:    $all
+# Required-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# Short-Description: node-startup
+### END INIT INFO
+
 /sbin/swapoff -a
 /sbin/iptables -P INPUT ACCEPT
 /sbin/iptables -P FORWARD ACCEPT
@@ -82,3 +91,4 @@ EOF
 # Add startup script to startup procedure
 sudo chmod 777 /etc/init.d/node-startup
 sudo update-rc.d node-startup defaults
+systemctl enable node-startup
