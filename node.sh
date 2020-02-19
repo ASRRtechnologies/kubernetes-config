@@ -1,5 +1,5 @@
 # Install sudo
-apt-get install sudo -y
+sudo apt-get install sudo -y
 
 # Add /sbin/ to path
 [[ "$PATH" != *":/sbin/"* ]] && echo PATH="$PATH:/sbin/" >> /etc/environment && export PATH="$PATH:/sbin/"
@@ -81,3 +81,4 @@ EOF
 
 # Add startup script to startup procedure
 sudo update-rc.d node-startup defaults
+sudo chmod 777 /etc/init.d/node-startup
