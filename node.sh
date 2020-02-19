@@ -4,12 +4,6 @@ apt-get install sudo -y
 # Add /sbin/ to path
 [[ "$PATH" != *":/sbin/"* ]] && echo PATH="$PATH:/sbin/" >> /etc/environment && export PATH="$PATH:/sbin/"
 
-# Disable swap
-/sbin/swapoff -a
-
-# Install iptables-persistent
-sudo apt-get install -y iptables-persistent
-
 # Install shasum
 sudo apt-get install libdigest-sha-perl -y
 
@@ -68,8 +62,21 @@ sudo apt-get update
 
 sudo apt-get install -y kubelet kubeadm kubectl
 
+# Disable swap
+/sbin/swapoff -a
+
 # Allow everything
 /sbin/iptables -P INPUT ACCEPT
 /sbin/iptables -P FORWARD ACCEPT
 /sbin/iptables -P OUTPUT ACCEPT
-sudo netfilter-persistent save
+
+# Create startup script
+cat > /etc/init.d/node-startup <<EOF
+/sbin/swapoff -a
+/sbin/iptables -P INPUT ACCEPT
+/sbin/iptables -P FORWARD ACCEPT
+/sbin/iptables -P OUTPUT ACCEPT
+EOF
+
+# Add startup script to startup procedure
+sudo update-rc.d node-startup defaults
