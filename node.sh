@@ -83,12 +83,17 @@ cat > /etc/init.d/node-startup <<EOF
 ### END INIT INFO
 
 /sbin/swapoff -a
-/sbin/iptables -P INPUT ACCEPT
-/sbin/iptables -P FORWARD ACCEPT
-/sbin/iptables -P OUTPUT ACCEPT
+
+while :
+do
+    /sbin/iptables -P INPUT ACCEPT
+    /sbin/iptables -P FORWARD ACCEPT
+    /sbin/iptables -P OUTPUT ACCEPT
+	sleep 1
+done
 EOF
 
 # Add startup script to startup procedure
 sudo chmod 777 /etc/init.d/node-startup
-sudo update-rc.d node-startup defaults 10000
+sudo update-rc.d node-startup defaults
 systemctl enable node-startup
