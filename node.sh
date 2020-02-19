@@ -80,5 +80,5 @@ cat > /etc/init.d/node-startup <<EOF
 EOF
 
 # Add startup script to startup procedure
-sudo update-rc.d node-startup defaults
 sudo chmod 777 /etc/init.d/node-startup
+sudo update-rc.d node-startup defaults
