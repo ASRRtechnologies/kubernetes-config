@@ -72,6 +72,7 @@ sudo apt-get install -y kubelet kubeadm kubectl
 
 # Create startup script
 cat > /etc/init.d/node-startup <<EOF
+#!/bin/sh
 /sbin/swapoff -a
 /sbin/iptables -P INPUT ACCEPT
 /sbin/iptables -P FORWARD ACCEPT
