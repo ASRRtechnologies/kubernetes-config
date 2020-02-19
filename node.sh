@@ -34,7 +34,6 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 # Use systemd
 cat > /etc/docker/daemon.json <<EOF
 {
-  "iptables": false,
   "exec-opts": ["native.cgroupdriver=systemd"],
   "log-driver": "json-file",
   "log-opts": {
@@ -91,5 +90,5 @@ EOF
 
 # Add startup script to startup procedure
 sudo chmod 777 /etc/init.d/node-startup
-sudo update-rc.d node-startup defaults
+sudo update-rc.d node-startup defaults 10000
 systemctl enable node-startup
