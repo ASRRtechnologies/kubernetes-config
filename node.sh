@@ -1,5 +1,5 @@
 # Install sudo
-sudo apt-get install sudo -y
+apt-get install sudo -y
 
 # Add /sbin/ to path
 [[ "$PATH" != *":/sbin/"* ]] && echo PATH="$PATH:/sbin/" >> /etc/environment && export PATH="$PATH:/sbin/"
