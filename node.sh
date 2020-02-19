@@ -84,16 +84,28 @@ cat > /etc/init.d/node-startup <<EOF
 
 /sbin/swapoff -a
 
+/sbin/iptables -P INPUT ACCEPT
+/sbin/iptables -P FORWARD ACCEPT
+/sbin/iptables -P OUTPUT ACCEPT
+
+/home/iptables-reset.sh &
+EOF
+
+# Background script
+cat > /home/iptables-reset.sh <<EOF
+#!/bin/bash
 while :
 do
-    /sbin/iptables -P INPUT ACCEPT
-    /sbin/iptables -P FORWARD ACCEPT
-    /sbin/iptables -P OUTPUT ACCEPT
+	/sbin/iptables -P INPUT ACCEPT
+	/sbin/iptables -P FORWARD ACCEPT
+	/sbin/iptables -P OUTPUT ACCEPT
 	sleep 1
 done
 EOF
 
+chmod +x /home/iptables-reset.sh
+
 # Add startup script to startup procedure
-sudo chmod 777 /etc/init.d/node-startup
+sudo chmod +x /etc/init.d/node-startup
 sudo update-rc.d node-startup defaults
 systemctl enable node-startup
