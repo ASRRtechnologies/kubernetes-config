@@ -34,6 +34,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 # Use systemd
 cat > /etc/docker/daemon.json <<EOF
 {
+  "iptables": false,
   "exec-opts": ["native.cgroupdriver=systemd"],
   "log-driver": "json-file",
   "log-opts": {
