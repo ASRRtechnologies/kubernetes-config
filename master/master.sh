@@ -5,6 +5,9 @@ chmod 777 get_helm.sh && source get_helm.sh
 # Install HAProxy
 apt-get install haproxy -y
 
+# Install JSON parser
+sudo apt-get install jq -y
+
 # Weave Net
 sudo mkdir -p /var/lib/weave
 head -c 16 /dev/urandom | shasum -a 256 | cut -d" " -f1 | sudo tee /var/lib/weave/weave-passwd
