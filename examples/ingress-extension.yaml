@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: uptime-tool
+  namespace: uptime-tool
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  tls:
+  - hosts:
+    - <sub-domain>.asrr-tech.com
+    secretName: uptime-tool-tls
+  rules:
+  - host: <sub-domain>.asrr-tech.com
+    http:
+      paths:
+        - path: /api/v1(/|$)(.*)
+          backend:
+            serviceName: uptime-tool
+            servicePort: 8080

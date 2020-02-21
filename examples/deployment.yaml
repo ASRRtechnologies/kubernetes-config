@@ -1,36 +1,4 @@
 apiVersion: v1
-kind: Namespace
-metadata:
-  name: uptime-tool
-
----
-
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: uptime-tool
-  namespace: uptime-tool
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    ingress.kubernetes.io/rewrite-target: /
-spec:
-  tls:
-  - hosts:
-    - uptime-tool.asrr-tech.com
-    secretName: uptime-tool-tls
-  rules:
-  - host: uptime-tool.asrr-tech.com
-    http:
-      paths:
-        - path: /
-          backend:
-            serviceName: uptime-tool
-            servicePort: 5678
-
----
-
-apiVersion: v1
 kind: Service
 metadata:
   name: uptime-tool
@@ -39,7 +7,7 @@ spec:
   selector:
     app: uptime-tool
   ports:
-  - port: 5678
+  - port: 8080
 
 ---
 
@@ -63,6 +31,16 @@ spec:
     spec:
       containers:
       - name: uptime-tool
-        image: hashicorp/http-echo
-        args:
-          - "-text=apple"
+        image: <image>
+        imagePullPolicy: Always
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        env:
+          - name: SPRING_RABBITMQ_HOST
+            value: <ip>
+          - name: SPRING_DATA_MONGODB_HOST
+            value: <ip>
