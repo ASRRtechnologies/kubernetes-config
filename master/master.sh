@@ -22,4 +22,4 @@ kubectl apply -f https://raw.githubusercontent.com/ASRRtechnologies/kubernetes-c
 kubectl create namespace cert-manager
 kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.13.0/cert-manager.yaml
 kubectl apply -f https://raw.githubusercontent.com/ASRRtechnologies/kubernetes-config/master/master/yaml/letsencrypt-issuer-prod.yaml
-kubectl apply -f https://raw.githubusercontent.com/ASRRtechnologies/kubernetes-config/master/master/yaml/letsencrypt-issuer-test.yaml
+kubectl apply -f https://raw.githubusercontent.com/ASRRtechnologies/kubernetes-config/master/master/yaml/letsencrypt-issuer-staging.yaml
