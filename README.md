@@ -1,5 +1,13 @@
 # Kubernetes Configuration
 
+## Establish a remote connection to the cluster
+1. Get the credentials of the master
+```
+wget https://raw.githubusercontent.com/ASRRtechnologies/kubernetes-config/master/kubeconfig.sh
+chmod +x kubeconfig.sh && source kubeconfig.sh
+```
+2. Use these credentials to connect to the cluster
+
 ## Worker node installation procedure
 1. Download the node installation script:
 ```
