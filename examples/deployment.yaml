@@ -33,6 +33,8 @@ spec:
       labels:
         app: <app-name>
     spec:
+      #imagePullSecrets:
+      #- name: regcred
       containers:
         - name: <app-name>
           image: <image>
