@@ -29,7 +29,8 @@ sudo add-apt-repository \
 
 sudo apt-get update
 
-sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+sudo apt-get install docker-ce=5:19.03.14~3-0~debian-buster docker-ce-cli=5:19.03.14~3-0~debian-buster containerd.io
+# sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
 # Use systemd
 cat > /etc/docker/daemon.json <<EOF
