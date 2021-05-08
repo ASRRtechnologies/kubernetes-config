@@ -51,3 +51,5 @@ sudo systemctl restart docker
 
 #Make sure swap is off
 sudo swapoff -a
+
+export KUBECONFIG=/etc/kubernetes/admin.conf
